@@ -2,17 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Home</title>
+    <title>{{ page.title }}</title>
+    <link href="assets/css/syntax.css" rel="stylesheet">
   </head>
   <body>
     {{ content }}
-
-    This is some Prolog code:
-    {% highlight prolog %}
-    maplist(_Pred, [], []).
-    maplist(Pred, [X|Xs], [Y|Ys]) :-
-        call(Pred, X, Y),
-        maplist(Pred, Xs, Ys).
-    {% endhighlight %}
   </body>
 </html>

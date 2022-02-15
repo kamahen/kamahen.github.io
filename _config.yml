@@ -1,1 +1,9 @@
 name: My Jekyll Website
+
+markdown: kramdown
+
+kramdown:
+  input: GFM  # Github Flavored Markdown
+
+# rougify style github >assets/css/syntax.css
+highlighter: rouge
