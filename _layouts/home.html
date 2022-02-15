@@ -2,12 +2,42 @@
 layout: default
 ---
 
-{{ conent }}
+
+{{ content }}
+{% assign postslist = site.posts | sort:'url' | reverse %}
 <ul class="myposts">
-{% for post in site.posts %}
-<li><a href="{{ post.url }}">{{ post.title}}</a>
-  <!-- TODO: need css for postDate -->
-  <span class="postDate">{{ post.date | date: "%b %-d, %Y" }}</span>
-</li>
+{% for post in postslist %}
+  <li><a href="{{ post.url }}">{{ post.title}}</a>
+    <!-- TODO: need css for postDate -->
+    <span class="postDate">{{ post.date | date: "%b %-d, %Y" }}</span>
+    <i> {{ post.tags }} </i>
+  </li>
 {% endfor %}
 </ul>
+
+<hr/>
+Tags
+<p/>
+
+{% assign all_tags = "" | split:"," %}
+{% assign all_posts = "" | split:"," %}
+{% assign post_i = -1 %}
+{% for post in postslist %}
+  {% assign post_i = post_i | plus: 1 %}
+  {% assign all_tags = all_tags | concat: post.tags %}
+  {% assign post_tags = post.tags %}
+  {% for tag in post_tags %}
+    {% assign all_posts = all_posts | push: post_i %}
+  {% endfor %}
+{% endfor %}
+{% assign all_tags_uniq = all_tags | sort | uniq %}
+
+<ul class="myposts">
+{% for tag in all_tags_uniq %}
+  <li>{{ tag }}:
+  </li>
+{% endfor %}
+</ul>
+
+<p>all_posts: {{ all_posts | join:", " }}
+<p>all_tags: {{ all_tags | join: ", "}}

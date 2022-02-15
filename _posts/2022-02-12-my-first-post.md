@@ -1,6 +1,8 @@
 ---
 title: My First Post
 layout: default
+date: 2022-02-12
+tags: prolog
 ---
 
 # {{ page.title }}
