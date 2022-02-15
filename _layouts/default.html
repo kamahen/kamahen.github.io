@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
-	<body>
-		{{ content }}
-	</body>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+  </head>
+  <body>
+    {{ content }}
+
+    This is some Prolog code:
+    {% highlight prolog %}
+    maplist(_Pred, [], []).
+    maplist(Pred, [X|Xs], [Y|Ys]) :-
+        call(Pred, X, Y),
+        maplist(Pred, Xs, Ys).
+    {% endhighlight %}
+  </body>
 </html>
